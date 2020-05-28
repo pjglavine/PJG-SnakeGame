@@ -2,7 +2,7 @@
 A simple 2D Snake game built using C++ and SDL. This is my capstone project for the C++ Nanodegree program with Udacity.
 
 [Udacity C++ Nanodegree Program](https://www.udacity.com/course/c-plus-plus-nanodegree--nd213). The code for this repo was inspired by [this](https://codereview.stackexchange.com/questions/212296/snake-game-in-c-with-sdl) excellent StackOverflow post and set of responses.
-
+|:---:|
 <img src="snake_game.gif"/>
 
 The goal in the game is to grow your snake as big as possible by eating the food (yellow blocks) and avoiding the poison (red blocks). While eating food grows the snake, eating poison will cause your snake and your score to shrink. If the snake size is small (only one blue block) and it eats poison it will die and it's game over. The walls are also deadly to the snake so avoid running into those! The snake is controlled using the arrow keys with the ENTER key allowing the player to pause and unpause games in progress.
