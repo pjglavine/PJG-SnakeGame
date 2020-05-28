@@ -14,7 +14,6 @@ class Audio {
 
 public:
   Audio(); // Constructor
-  ~Audio();
   void GameMusic(bool play); // Plays game music.
 
   // Sound effect functions.
