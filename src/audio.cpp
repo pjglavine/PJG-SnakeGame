@@ -17,10 +17,10 @@ Audio::Audio() : gameMusic(NULL), gameOver(NULL), foodEaten(NULL), poisonEaten(N
   }
 }
 
-//PJG: free audio resources.
-Audio::~Audio() {
-  Audio::FreeResources();
-}
+//PJG: free audio resources. TODO
+//Audio::~Audio() {
+//  Audio::FreeResources();
+//}
 
 // Controls game music. bool play acts as a signal for turning music on or off.
 void Audio::GameMusic(bool play){
@@ -84,7 +84,7 @@ void Audio::Unpause(){
   Mix_PlayChannel( -1, unpauseSound, 0 );
 }
 
-// Free up the SDL resources used and quit mixer.
+//PJG: Free up the SDL resources used and quit mixer. TODO
 void Audio::FreeResources(){
   Mix_FreeMusic(gameMusic);
   Mix_FreeChunk(gameOver);
