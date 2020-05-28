@@ -34,8 +34,8 @@ The game utilizes several SDL libraries to render the game, receive controller i
 ## C++ Capstone Project
 
 | Criteria | Meets Specifications | Place Implemented|
-|--------------------------------------|----------------------|------------------|
-|README (All Rubric Points REQUIRED)| A README with instructions is included with the project The README is included with the project and has instructions for building/running the project. If any additional libraries are needed to run the project, these are indicated with cross-platform installation instructions.| Here |
+|:---:|:---:|:---:|
+|README (All Rubric Points REQUIRED)| A README with instructions is included with the project. The README is included with the project and has instructions for building/running the project. If any additional libraries are needed to run the project, these are indicated with cross-platform installation instructions.| Here |
 
 
 CRITERIA
