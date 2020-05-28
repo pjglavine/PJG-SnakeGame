@@ -47,15 +47,15 @@ The game utilizes several SDL libraries to render the game, receive controller i
 ## Loops, Functions, I/O
 | Criteria | Meets Specifications | Place Implemented|
 |:---:|:---:|:---:|
-| The project demonstrates an understanding of C++ functions and control structures. | A variety of control structures are used in the project. The project code is clearly organized into functions.| |
-| The project reads data from a file and process the data, or the program writes data to a file. | The project reads data from an external file or writes data to a file as part of the necessary operation of the program. | |
-| The project accepts user input and processes the input. | The project accepts input from a user as part of the necessary operation of the program. | |
+| The project demonstrates an understanding of C++ functions and control structures. | A variety of control structures are used in the project. The project code is clearly organized into functions.| The control scheme for the menu system in main() |
+| The project reads data from a file and process the data, or the program writes data to a file. | The project reads data from an external file or writes data to a file as part of the necessary operation of the program. | audio.h reads audio files from an assets folder. |
+| The project accepts user input and processes the input. | The project accepts input from a user as part of the necessary operation of the program. | controller.cpp menu.cpp both show how input is received from users to control aspects of the application. |
 
 ## Object Oriented Programming
 | Criteria | Meets Specifications | Place Implemented|
 |:---:|:---:|:---:|
-| The project uses Object Oriented Programming techniques. | The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks. | |
-| Classes use appropriate access specifiers for class members. | All class data members are explicitly specified as public, protected, or private. | |
+| The project uses Object Oriented Programming techniques. | The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks. | Classes used throughout, see menu.cpp and sound.cpp |
+| Classes use appropriate access specifiers for class members. | All class data members are explicitly specified as public, protected, or private. | menu.cpp shows class with added accessors. All class functions and variables explicitly specified as public, protected, or private.
 | Class constructors utilize member initialization lists. | All class members that are set to argument values are initialized through member initialization lists. | |
 | Class constructors utilize member initialization lists. | All class members that are set to argument values are initialized through member initialization lists. | |
 | Classes abstract implementation details from their interfaces. | All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways. | |
