@@ -6,6 +6,8 @@
 #include <chrono>
 #include <thread>
 
+//For reviewer: changes marked with "PJG:" tag.
+
 class Snake {
  public:
   enum class Direction { kUp, kDown, kLeft, kRight };
@@ -19,7 +21,7 @@ class Snake {
   void Update();
 
   void GrowBody();
-  void ShrinkBody();
+  void ShrinkBody(); //PJG: added function to shrink the snake.
   bool SnakeCell(int x, int y);
 
   Direction direction = Direction::kUp;
@@ -35,7 +37,7 @@ class Snake {
   void UpdateHead();
   void UpdateBody(SDL_Point &current_cell, SDL_Point &prev_cell);
   bool growing{false};
-  bool shrinking{false};
+  bool shrinking{false}; //PJG: added flag to indicate if shrinking is happening
   int grid_width;
   int grid_height;
 };

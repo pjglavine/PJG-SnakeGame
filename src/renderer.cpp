@@ -3,6 +3,8 @@
 #include <string>
 #include <SDL_image.h>
 
+// For reviewer: changes have been marked with "PJG:" tag.
+
 Renderer::Renderer(const std::size_t screen_width,
                    const std::size_t screen_height,
                    const std::size_t grid_width, const std::size_t grid_height)
@@ -16,7 +18,7 @@ Renderer::Renderer(const std::size_t screen_width,
     std::cerr << "SDL_Error: " << SDL_GetError() << "\n";
   }
 
-  //Initialize PNG loading
+  //PJG: Initialize PNG loading
   int imgFlags = IMG_INIT_PNG;
   if( !( IMG_Init( imgFlags ) & imgFlags ) )
   {printf( "SDL_image could not initialize! SDL_image Error: %s\n", IMG_GetError() );}
@@ -59,7 +61,7 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, SDL_Point const 
   block.y = food.y * block.h;
   SDL_RenderFillRect(sdl_renderer, &block);
 
-  // Render Poison
+  //PJG: Render Poison
   SDL_SetRenderDrawColor(sdl_renderer, 0xFF, 0x00, 0x00, 0xFF);
   block.x = poison.x * block.w;
   block.y = poison.y * block.h;
@@ -87,16 +89,18 @@ void Renderer::Render(Snake const snake, SDL_Point const &food, SDL_Point const 
   SDL_RenderPresent(sdl_renderer);
 }
 
+//PJG: Overloaded Render() for the menu system.
+
 void Renderer::Render(std::string menuOption){
-  if (menuOption == "start"){
-    SDL_Surface* startScreenSurface = IMG_Load("assets/start.png");
+  if (menuOption == "start"){ //PJG: flag for rendering start menu.
+    SDL_Surface* startScreenSurface = IMG_Load("assets/start.png"); //PJG: load start menu image into SDL  surface.
     SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
-    SDL_Texture* startScreenTexture = SDL_CreateTextureFromSurface(sdl_renderer, startScreenSurface);
-    SDL_FreeSurface(startScreenSurface);
-    SDL_RenderClear(sdl_renderer);
-    SDL_RenderCopy(sdl_renderer, startScreenTexture, NULL, NULL);
-    SDL_RenderPresent(sdl_renderer);
-  } else if (menuOption == "gameover"){
+    SDL_Texture* startScreenTexture = SDL_CreateTextureFromSurface(sdl_renderer, startScreenSurface); //PJG: turn SDL surface into SDL texture.
+    SDL_FreeSurface(startScreenSurface); //PJG: free resource.
+    SDL_RenderClear(sdl_renderer); //PJG: clear renderer.
+    SDL_RenderCopy(sdl_renderer, startScreenTexture, NULL, NULL); //PJG: copy the SDL texture to the renderer.
+    SDL_RenderPresent(sdl_renderer); //PJG: display rendered menu.
+  } else if (menuOption == "gameover"){ //PJG: flag for rendering gameover menu. Process below is same as for start menu.
     SDL_Surface* gameOverSurface = IMG_Load("assets/gameover.png");
     SDL_SetRenderDrawColor(sdl_renderer, 0x1E, 0x1E, 0x1E, 0xFF);
     SDL_Texture* gameOverTexture = SDL_CreateTextureFromSurface(sdl_renderer, gameOverSurface);
