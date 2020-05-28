@@ -18,6 +18,7 @@ The game utilizes several SDL libraries to render the game, receive controller i
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 * SDL2 >= 2.0
   * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
+  * SDL2_mixer and SDL2_image are required to build this application.
   * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
 * gcc/g++ >= 5.4
   * Linux: gcc / g++ is installed by default on most Linux distros
@@ -25,11 +26,11 @@ The game utilizes several SDL libraries to render the game, receive controller i
   * Windows: recommend using [MinGW](http://www.mingw.org/)
 
 ## Basic Build Instructions
-
-1. Clone this repo.
-2. Make a build directory in the top level directory: `mkdir build && cd build`
-3. Compile: `cmake .. && make`
-4. Run it: `./SnakeGame`.
+1. sudo apt install libsdl2-image-* libsdl2-mixer*
+2. Clone this repo.
+3. Make a build directory in the top level directory: `mkdir build && cd build`
+4. Compile: `cmake .. && make`
+5. Run it: `./SnakeGame`.
 
 ## C++ Capstone Project
 ## README (All Rubric Points REQUIRED)
@@ -42,7 +43,7 @@ The game utilizes several SDL libraries to render the game, receive controller i
 ## Compiling and Testing (All Rubric Points REQUIRED)
 | Criteria | Meets Specifications | Place Implemented |
 |:---:|:---:|:---:|
-|The submission must compile and run.| The project code must compile and run without errors. We strongly recommend using cmake and make, as provided in the starter repos. If you choose another build system, the code must compile on any reviewer platform. |  |
+|The submission must compile and run.| The project code must compile and run without errors. We strongly recommend using cmake and make, as provided in the starter repos. If you choose another build system, the code must compile on any reviewer platform. | Here |
 
 ## Loops, Functions, I/O
 | Criteria | Meets Specifications | Place Implemented|
@@ -56,29 +57,28 @@ The game utilizes several SDL libraries to render the game, receive controller i
 |:---:|:---:|:---:|
 | The project uses Object Oriented Programming techniques. | The project code is organized into classes with class attributes to hold the data, and class methods to perform tasks. | Classes used throughout, see menu.cpp and sound.cpp |
 | Classes use appropriate access specifiers for class members. | All class data members are explicitly specified as public, protected, or private. | menu.cpp shows class with added accessors. All class functions and variables explicitly specified as public, protected, or private.
-| Class constructors utilize member initialization lists. | All class members that are set to argument values are initialized through member initialization lists. | |
-| Class constructors utilize member initialization lists. | All class members that are set to argument values are initialized through member initialization lists. | |
-| Classes abstract implementation details from their interfaces. | All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways. | |
-| Classes encapsulate behavior. | Appropriate data and functions are grouped into classes. Member data that is subject to an invariant is hidden from the user. State is accessed via member functions. | |
-| Classes follow an appropriate inheritance hierarchy. | Inheritance hierarchies are logical. Composition is used instead of inheritance when appropriate. Abstract classes are composed of pure virtual functions. Override functions are specified. | |
-| Overloaded functions allow the same function to operate on different parameters. | One function is overloaded with different signatures for the same function name. | |
-| Derived class functions override virtual base class functions. | One member function in an inherited class overrides a virtual base class member function. | |
-| Templates generalize functions in the project. | One function is declared with a template that allows it to accept a generic parameter. | |
+| Class constructors utilize member initialization lists. | All class members that are set to argument values are initialized through member initialization lists. | Initializer lists used in audio.cpp |
+| Classes abstract implementation details from their interfaces. | All class member functions document their effects, either through function names, comments, or formal documentation. Member functions do not change program state in undocumented ways. | All classes use abstraction to hide details from interfaces. Functions use relevant names and all functions documented through comments. This is done throughout source code. |
+| Classes encapsulate behavior. | Appropriate data and functions are grouped into classes. Member data that is subject to an invariant is hidden from the user. State is accessed via member functions. | See menu.cpp, Menu::Start() and Menu::GameOver() both have encapsulated functionality with minimum required input from user. Interface hides code behaviour. Data and functions grouped in appropriate classes. |
+| Classes follow an appropriate inheritance hierarchy. | Inheritance hierarchies are logical. Composition is used instead of inheritance when appropriate. Abstract classes are composed of pure virtual functions. Override functions are specified. | Not included in project. |
+| Overloaded functions allow the same function to operate on different parameters. | One function is overloaded with different signatures for the same function name. | See Renderer::Render() which is overloaded to use snake body, food, and poison objects as parameters, with the alternative option of passing in a string naming the menu to be rendered.|
+| Derived class functions override virtual base class functions. | One member function in an inherited class overrides a virtual base class member function. | Not included in project. |
+| Templates generalize functions in the project. | One function is declared with a template that allows it to accept a generic parameter. | Not included in project. |
 
 ## Memory Management
 | Criteria | Meets Specifications | Place Implemented|
 |:---:|:---:|:---:|
-| The project makes use of references in function declarations. | At least two variables are defined as references, or two functions use pass-by-reference in the project code. | |
-| The project uses destructors appropriately. | At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor. | |
-| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate. | The project follows the Resource Acquisition Is Initialization pattern where appropriate, by allocating objects at compile-time, initializing objects when they are declared, and utilizing scope to ensure their automatic destruction. | |
-| The project follows the Rule of 5. | For all classes, if any one of the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor are defined, then all of these functions are defined. | |
-| The project uses move semantics to move data, instead of copying it, where possible. | For classes with move constructors, the project returns objects of that class by value, and relies on the move constructor, instead of copying the object. | |
-| The project uses smart pointers instead of raw pointers. | The project uses at least one smart pointer: unique_ptr, shared_ptr, or weak_ptr. The project does not use raw pointers. | |
+| The project makes use of references in function declarations. | At least two variables are defined as references, or two functions use pass-by-reference in the project code. | Renderer::Render(Snake const snake, SDL_Point const &food, SDL_Point const &poison) and Game::Update(Audio &audio) use pass-by-reference. |
+| The project uses destructors appropriately. | At least one class that uses unmanaged dynamically allocated memory, along with any class that otherwise needs to modify state upon the termination of an object, uses a destructor. | Audio::~Audio() deallocates memory used by Mixer_Music and Mixer_Chunk objects. |
+| The project uses scope / Resource Acquisition Is Initialization (RAII) where appropriate. | The project follows the Resource Acquisition Is Initialization pattern where appropriate, by allocating objects at compile-time, initializing objects when they are declared, and utilizing scope to ensure their automatic destruction. | Not included in project. |
+| The project follows the Rule of 5. | For all classes, if any one of the copy constructor, copy assignment operator, move constructor, move assignment operator, and destructor are defined, then all of these functions are defined. | Not included in project. |
+| The project uses move semantics to move data, instead of copying it, where possible. | For classes with move constructors, the project returns objects of that class by value, and relies on the move constructor, instead of copying the object. | Not included in project. |
+| The project uses smart pointers instead of raw pointers. | The project uses at least one smart pointer: unique_ptr, shared_ptr, or weak_ptr. The project does not use raw pointers. | Not included in project. |
 
 ## Concurrency
 | Criteria | Meets Specifications | Place Implemented|
 |:---:|:---:|:---:|
-| The project uses multithreading. | The project uses multiple threads in the execution. | |
-| A promise and future is used in the project. | A promise and future is used to pass data from a worker thread to a parent thread in the project code. | |
-| A mutex or lock is used in the project. | A mutex or lock (e.g. std::lock_guard or `std::unique_lock) is used to protect data that is shared across multiple threads in the project code. | |
-| A condition variable is used in the project. | A std::condition_variable is used in the project code to synchronize thread execution. | |
+| The project uses multithreading. | The project uses multiple threads in the execution. | Not included in project. |
+| A promise and future is used in the project. | A promise and future is used to pass data from a worker thread to a parent thread in the project code. | Not included in project. |
+| A mutex or lock is used in the project. | A mutex or lock (e.g. std::lock_guard or `std::unique_lock) is used to protect data that is shared across multiple threads in the project code. | Not included in project. |
+| A condition variable is used in the project. | A std::condition_variable is used in the project code to synchronize thread execution. | Not included in project. |

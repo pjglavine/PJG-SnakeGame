@@ -17,6 +17,11 @@ Audio::Audio() : gameMusic(NULL), gameOver(NULL), foodEaten(NULL), poisonEaten(N
   }
 }
 
+//PJG: free audio resources.
+Audio::~Audio() {
+  Audio::FreeResources();
+}
+
 // Controls game music. bool play acts as a signal for turning music on or off.
 void Audio::GameMusic(bool play){
   gameMusic = Mix_LoadMUS(gameMusicPath); // Load music file.
