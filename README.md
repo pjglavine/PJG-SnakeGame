@@ -5,9 +5,13 @@ A simple 2D Snake game built using C++ and SDL. This is my capstone project for 
 |:---:|
 | <img src="snake_game.gif"/> |
 
+## Game Overview and Controls
 The goal in the game is to grow your snake as big as possible by eating the food (yellow blocks) and avoiding the poison (red blocks). While eating food grows the snake, eating poison will cause your snake and your score to shrink. If the snake size is small (only one blue block) and it eats poison it will die and it's game over. The walls are also deadly to the snake so avoid running into those! The snake is controlled using the arrow keys with the ENTER key allowing the player to pause and unpause games in progress.
 
 The game utilizes several SDL libraries to render the game, receive controller input and output audio such as music and in-game event sounds. All game sounds and music were created by me using BeepBox https://beepbox.co.
+
+## Code Structure
+The code runs a standard game loop which has a controller class to handle user input, a game class to implement the game logic, a snake class to model the snake in-game, an audio class for music and sound, and a menu class for displaying information to the player. The code is extensively commented with details of functionality.
 
 ## Dependencies for Running Locally
 * cmake >= 3.7
@@ -18,7 +22,7 @@ The game utilizes several SDL libraries to render the game, receive controller i
   * Windows: [Click here for installation instructions](http://gnuwin32.sourceforge.net/packages/make.htm)
 * SDL2 >= 2.0
   * All installation instructions can be found [here](https://wiki.libsdl.org/Installation)
-  * SDL2_mixer and SDL2_image are required to build this application.
+  * SDL2_mixer and SDL2_image are required to build this application. [https://www.libsdl.org/projects/SDL_mixer/] [https://www.libsdl.org/projects/SDL_image/]
   * Note that for Linux, an `apt` or `apt-get` installation is preferred to building from source.
 * gcc/g++ >= 5.4
   * Linux: gcc / g++ is installed by default on most Linux distros
